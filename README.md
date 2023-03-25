@@ -1,2 +1,3 @@
 # Docker-KB
-Knowledge base of Docker |  Important concepts and commands
+- Knowledge base of Docker
+- Important concepts and commands
