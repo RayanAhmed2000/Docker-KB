@@ -1,0 +1,127 @@
+
+Images Commands
+---------------
+
+
+docker images              # To view images
+
+docker rmi –f imagename    # To delete images
+
+docker commit c00 c00image # To create image of container c00
+
+docker search Ubuntu       # To search images on Docker Hub
+
+docker pull Ubuntu         # To download images
+
+docker push rayanahmed21/project1   # To push images
+
+docker import calc-container.tar calcfs:latest      #To import a docker image
+
+vi Dockerfile                                       # To create a dockerfile
+
+docker build –t newimage .                          # To create an image from dockerfile
+
+docker run –it  --name c00 newimage /bin/bash       # Now you can create a container from this image (newimage)
+
+
+
+Container Commands
+------------------
+
+
+docker run -it --name c00 ubuntu /bin/bash          # To create container + come inside container
+
+docker run –td --name c00 ubuntu /bin/bash          # To create container but not enter the container
+
+docker start c00                                    # To start a container
+
+docker stop c00                                     # To stop a container
+
+docker rm c00                                       # To delete a container
+
+docker rm -f c00                                    # To forcefully delete a container
+
+docker attach c00    	                            # To enter inside container 
+    or
+docker exec –it c00 /bin/bash       
+ 
+(Docker Attach - Just connects to main process inside the container)
+(Docker EXEC - Creates a new pid and starts a clean environment from a new end)
+
+docker ps                                           # To list running containers
+
+docker ps –a                                        # To list all containers
+
+docker diff c00                                     # To see what changes you made to container c00
+
+docker stats c00                                    # show container utilization RAM CPU 
+
+docker top c00                                      # show processes running inside container
+
+docker logs c00                                     # show container logs
+
+CONATINER KA BACKUP LENE  KA ALTERNATIVE TAREEKA (one way is docker commit)
+
+docker save <imagename> > filename.tar              # take conatiner backup in form of a tar file
+
+docker load -i filename.tar                         # create 
+
+docker system df                                    # kon sa conatiner/image/volume kitni space le rahi hai
+
+docker info | grep -i root 
+
+docker network ls                                   # 
+
+docker inspect c00                                  # conatiner details like networking etc
+
+docker inspect bridge                               # 
+
+
+
+
+
+Docker Volume
+-------------
+
+
+docker volume create vol1                       # Create docker volume 
+
+docker volume rm vol1                           # Remove/delete Docker volume
+
+docker volume ls                                # List all volumes
+
+docker volume prune                             # Remove all unused docker volumes
+
+docker run –it --name c02 ubuntu  --privledged=true --volume-from c00               # Share volume of one container to other while creating the other container
+
+docker run –td --name c00 –p 80:80 ubuntu /bin/bash                                 # Map port 80 of host to port 80 of container 
+
+
+
+
+
+Shell script commands of Docker
+-------------------------------
+
+
+docker  stop $(docker ps –a –q)                 # Stopping all running containers
+
+docker rm $(docker ps –a -q)                    # Delete all stopped containers
+
+docker rmi –f $(docker images -q)               # Delete all images 
+
+
+
+Port Forwarding (Can only be done at the time of Container Creation)
+-------------------------------------------------------------------
+
+docker run -it --name=c00 -p 80:6555 ubuntu /bin/bash
+
+
+
+
+
+
+
+
+ 
