@@ -3,17 +3,17 @@ Images Commands
 ---------------
 
 
-docker images              # To view images
+docker images                               # To view images
 
-docker rmi –f imagename    # To delete images
+docker rmi –f imagename                     # To delete images
 
-docker commit c00 c00image # To create image of container c00
+docker commit c00 c00image                  # To create image of container c00
 
-docker search Ubuntu       # To search images on Docker Hub
+docker search Ubuntu                        # To search images on Docker Hub
 
-docker pull Ubuntu         # To download images
+docker pull Ubuntu                          # To download images
 
-docker push rayanahmed21/project1   # To push images
+docker push rayanahmed21/project1           # To push images
 
 docker import calc-container.tar calcfs:latest      #To import a docker image
 
@@ -32,6 +32,8 @@ Container Commands
 docker run -it --name c00 ubuntu /bin/bash          # To create container + come inside container
 
 docker run –td --name c00 ubuntu /bin/bash          # To create container but not enter the container
+
+docker run -d --name c00 nginx                      # to create a service container
 
 docker start c00                                    # To start a container
 
