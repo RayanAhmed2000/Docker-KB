@@ -66,13 +66,13 @@ CONATINER KA BACKUP LENE  KA ALTERNATIVE TAREEKA (one way is docker commit)
 
 docker save <imagename> > filename.tar              # take conatiner backup in form of a tar file
 
-docker load -i filename.tar                         # create 
+docker load -i filename.tar                         # create image from backup
 
 docker system df                                    # kon sa conatiner/image/volume kitni space le rahi hai
 
 docker info | grep -i root 
 
-docker network ls                                   # 
+docker network ls                                   # networking details of docker
 
 docker inspect c00                                  # conatiner details like networking etc
 
