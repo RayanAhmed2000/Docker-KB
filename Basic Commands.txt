@@ -117,7 +117,7 @@ docker rmi –f $(docker images -q)               # Delete all images
 Port Forwarding (Can only be done at the time of Container Creation)
 -------------------------------------------------------------------
 
-docker run -it --name=c00 -p 80:6555 ubuntu /bin/bash
+docker run -it --name=c00 -p 6555:80 ubuntu /bin/bash
 
 
 
