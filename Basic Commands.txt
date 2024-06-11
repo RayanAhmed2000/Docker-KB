@@ -23,7 +23,16 @@ docker build –t newimage .                          # To create an image from 
 
 docker run –it  --name c00 newimage /bin/bash       # Now you can create a container from this image (newimage)
 
+docker images df                                # 
 
+docker image history <imagename>                # history of images
+
+docker info                                     # details of docker like storage network number of images etc
+
+2 types of images -> RAW and SERVICE RAW
+
+RAW container se bahar aoge exit se to wo stop ho jaega
+ctrl + P + Q  -> Come out of RAW container without stopping it
 
 Container Commands
 ------------------
@@ -33,7 +42,7 @@ docker run -it --name c00 ubuntu /bin/bash          # To create container + come
 
 docker run –td --name c00 ubuntu /bin/bash          # To create container but not enter the container
 
-docker run -d --name c00 nginx                      # to create a service container
+docker run -d --name c00 nginx                      # to create a service container (RAW container ni chale)
 
 docker start c00                                    # To start a container
 
@@ -85,12 +94,19 @@ docker inspect bridge                               #
 Docker Volume
 -------------
 
+2 types of volume
+1 - Native/local volume
+2 - Mount
 
 docker volume create vol1                       # Create docker volume 
 
 docker volume rm vol1                           # Remove/delete Docker volume
 
 docker volume ls                                # List all volumes
+
+docker run -d --name=httpd -v vol1:/var/www/html  # Mount docker volumne in a container (CAN ONLY BE MOUNTED WHILE CREATING A CONATAINER)
+
+docker run -d --name=httpd -v /rayan:/var/www/html  # Mount a drive to a container that it will use as a volume 
 
 docker volume prune                             # Remove all unused docker volumes
 
