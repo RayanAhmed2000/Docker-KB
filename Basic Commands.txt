@@ -87,7 +87,7 @@ docker inspect c00                                  # conatiner details like net
 
 docker inspect bridge                               # 
 
-
+docker-compose up -d                                # will only execute the file named docker-compose.yml in the current working directory 
 
 
 
