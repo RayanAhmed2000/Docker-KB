@@ -1,0 +1,56 @@
+Question Write a Docker file OR How will you write an optimised Dockerfile OR How will you write a secure and optimised Dockerfile ?
+
+Scenario
+You have a Python Flask application with:
+
+project/ 
+├── app.py 
+├── requirements.txt 
+└── Dockerfile
+
+Requirements:
+Use Python 3.11 Slim image.
+Set /app as the working directory.
+Copy requirements.txt first.
+Install dependencies.
+Copy the remaining application files.
+Expose port 5000.
+Set environment variable APP_ENV=production.
+Create and use a non-root user named appuser.
+Start the application with python app.py.
+
+
+How will I write a secure and Optimsed Docker file ?
+
+FROM python:3.11-slim                                         #always try to use a smaller base image istead of UBUNTU for faster builds
+WORKDIR /app
+COPY requirements.txt .                                       #mention all the python packages in one txt file
+RUN pip install --no-cache-dir -r requirements.txt            #--no-cache-dir prevents pip from storing package cache, making the image smaller.
+COPY . .                                                     #copy full code
+ENV APP_ENV=production
+RUN useradd appuser                                           #do not run by root create a separate user named appuser
+USER appuser                                                 # use app user
+CMD ["python","app.py"]                                       #Start the application
+
+
+
+
+
+Why it is optimised and secure?
+Combined RUN apt-get update && apt-get install -y curl Now both happen inside one layer. Now suppose you modify the install command to RUN apt-get update && apt-get install -y curl wget 
+So in next docker build the app-get update will also run instead of taking it from layer RUN apt-get update if it was a separate layer
+
+
+
+
+
+Question ?
+WORKDIR /app
+RUN cd /tmp
+RUN pwd
+
+What will be printed?
+/app will be printed 
+WORKDIR /app.  ->    /app
+RUN cd /tmp.   -> Changes to /tmp temporarily, then exits
+RUN pwd.        -> Starts a new container with WORKDIR=/app, so prints /app
